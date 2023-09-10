@@ -38,9 +38,19 @@
 // // alert(result)
 
 //5. A whitespace character followed by a period, comma, colon, or semicolon
-regex = /\s+\.\,(:|;)/
+// regex = /\s+\.\,(:|;)/
+// result = input.search(regex)
+// alert(result)
+
+// 6. A word longer than six letters
+// regex = /\w{6}/
+// result = input.search(regex)
+// alert(result)
+
+//7. A word without the letter e (or E)
+
+regex = /\b[^e]\w+\b/i
 result = input.search(regex)
 alert(result)
 
-// 
 
