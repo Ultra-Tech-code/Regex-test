@@ -49,7 +49,7 @@
 
 //7. A word without the letter e (or E)
 
-regex = /\b[^e]\w+\b/i
+regex = /\b[^e]+\b/i
 result = input.search(regex)
 alert(result)
 
