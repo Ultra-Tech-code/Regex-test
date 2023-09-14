@@ -3,7 +3,8 @@ function gmailConveter(e){
  e.preventDefault;
 
 let input = document.getElementById("textInput").value
-const gmailResult = document.getElementById('gmailResult')
+let gmailResult = document.getElementById('gmailResult')
+
 
 let regex = /.*@.*\.com/
 let result = input.search(regex)
@@ -18,47 +19,52 @@ let result = input.search(regex)
     }
 }
 
+let result = {}
+let testResult = document.getElementById('test-result')
 
 //1. car and cat
-
-// regex = /(car)|(cat)/i
-// result = input.match(regex)
-// alert(result)
+regex = /(car)|(cat)/i
+result['carAndCat'] = regex.test("The cat sat in the car")
 
 
-// //2. pop and prop
+//2. pop and prop
+regex = /(pop)|(prop)/
+result['popAndprop'] = regex.test('The prop was pop at the party')
 
-// // regex = /(pop)|(prop)/
-// // result = input.match(regex)
-// // alert(result)
+//3. ferret, ferry, and ferrari
+// regex = /\b(ferret)\b|\b(ferry)\b|\b(ferrari) 
+regex = /(ferret)|(ferry)|(ferrari)/
+result['ferretFerryAndFerrari'] = regex.test('The ferry ferrai was ferret')
 
-// //3. ferret, ferry, and ferrari
-// // regex = /\b(ferret)\b|\b(ferry)\b|\b(ferrari) 
 
-// // regex = /(ferret)|(ferry)|(ferrari)/
-// // result = input.match(regex)
-// // alert(result)
 
-// // 4. Any word ending in ious
-// // regex = /\w+(ious)/
-// // result = input.match(regex)
-// // alert(result)
+// 4. Any word ending in ious
+regex = /\w+(ious)/
+result['AnyWordEndinginIous'] = regex.test("almost all gaseous element are hidious in nature")
 
 //5. A whitespace character followed by a period, comma, colon, or semicolon
-// regex = /\s+\.\,(:|;)/
-// result = input.search(regex)
-// alert(result)
+regex = /\s+\.\,(:|;)/
+result[' .,:;'] = regex.test(" .,:;")
 
 // 6. A word longer than six letters
-// regex = /\w{6}/
-// result = input.search(regex)
-// alert(result)
+regex = /\w{6}/
+result['AWordLongerThanSixLetters'] = regex.test("hello Mr kehinde")
+
 
 //7. A word without the letter e (or E)
+regex = /\b[^e]+\b/i
+// result.push(["A word without the letter e (or E)", regex.test("Mr Kenny has letter E in his name")])
+result['AWordWithoutTheLetter-e-or-E)'] = regex.test("Mr Kenny has letter E in his name")
 
-// regex = /\b[^e]+\b/i
-// result = input.search(regex)
-// alert(result)
+alert(JSON.stringify(result))
+
+for (const key in result) {
+
+    testResult.innerHTML += `<div>
+        <p>${key}: ${result[key]}</p>
+        </div>`
+
+}
 
 
 //8 
